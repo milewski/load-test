@@ -1,0 +1,18 @@
+version: "3.4"
+
+services:
+  k6:
+    image: loadimpact/k6
+    volumes:
+      - .:/home
+    command: run /home/runner.js
+
+  node:
+    image: node:alpine
+    working_dir: /home
+    container_name: load-node
+    command: node /home/source/node/index.js
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/home

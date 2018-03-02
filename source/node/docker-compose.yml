@@ -1,0 +1,20 @@
+version: "3.4"
+
+services:
+
+  api:
+    image: node:alpine
+    container_name: load-node
+    working_dir: /home
+    ports:
+      - 8000:80
+    volumes:
+      - .:/home
+    command: sh -c "npm install && npm start"
+
+  database:
+    image: mongo
+    container_name: load-mongodb
+    working_dir: /home
+    ports:
+      - 27017:27017

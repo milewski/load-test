@@ -1,0 +1,14 @@
+FROM php:fpm-alpine3.7
+
+RUN truncate -s 0 /etc/apk/repositories && \
+    echo "http://mirrors.aliyun.com/alpine/v3.7/main" >> /etc/apk/repositories && \
+    echo "http://mirrors.aliyun.com/alpine/v3.7/releases" >> /etc/apk/repositories && \
+    echo "http://mirrors.aliyun.com/alpine/v3.7/community" >> /etc/apk/repositories
+
+RUN apk add libxml2-dev curl-dev --no-cache && \
+    docker-php-ext-install pdo pdo_mysql mbstring tokenizer xml json exif dom curl zip
+
+RUN curl -sS https://getcomposer.org/installer | php && \
+    mv composer.phar /usr/local/bin/composer
+
+CMD ["php-fpm"]
