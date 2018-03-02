@@ -7,7 +7,7 @@ services:
     container_name: load-node
     working_dir: /home
     ports:
-      - 8000:80
+      - 8000:8000
     volumes:
       - .:/home
     command: sh -c "npm install && npm start"
