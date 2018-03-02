@@ -8,7 +8,7 @@ const app = express()
 /**
  * Context to the MongoDb
  */
-mongoose.connect('mongodb://localhost:27017/load-test')
+mongoose.connect('mongodb://database/load-test')
 
 app.post('/api/users/create', (req, res) => {
 
